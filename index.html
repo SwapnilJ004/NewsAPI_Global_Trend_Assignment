@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News API</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <div class="title">
+            <h1>GLOBAL TREND - API Integration Internship Assignment</h1>
+        </div>
+        <p class="title">Submitted by: Swapnil Joshi (joshiswapnil2004@gmail.com)</p>
+        <br><br><hr>
+    </header>
+    <br>
+
+    <h1 class="title">NewsAPI</h1>
+    <div id="search-box">
+        <input type="text" placeholder="Filter News.." id="search-placeholder">
+        <button type="submit" id="search-button">Search</button>
+    </div>
+    <div class="news-type">
+        <label for="newsTypeDropdown">Select News type:</label>
+        <select id="newsTypeDropdown" name="newsTypeDropdown" onchange="handleOptionChange(event)">
+            <option value="latest" selected>Latest</option>
+            <option value="market">Market</option>
+        </select>
+    </div>
+    <hr>
+    <div class="news">
+        <div class="news-block">
+            <h3></h3>
+            <p></p>
+            <hr>
+        </div>
+        <div class="news-block">
+            <h3></h3>
+            <p></p>
+            <hr>
+        </div>
+        <div class="news-block">
+            <h3></h3>
+            <p></p>
+            <hr>
+        </div>
+        <div class="news-block">
+            <h3></h3>
+            <p></p>
+            <hr>
+        </div>
+        <div class="news-block">
+            <h3></h3>
+            <p></p>
+            <hr>
+        </div>
+        <div class="news-block">
+            <a href="news.html"><h3></h3></a>
+            <p></p>
+            <hr>
+        </div>
+    </div>
+    <hr>
+    <br>
+    <br>
+    <footer>
+        <p>CC: All rights reserved</p>
+        <a href="https://newsdata.io/documentation">Link to API documentation</a>
+    </footer>
+</body>
+<script src="newsApi.js" type="module"></script>
+
+</html>
