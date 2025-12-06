@@ -35,7 +35,7 @@ if (window.location.pathname.endsWith("news.html")) {
 
 async function populateNewsData(url) {
     try {
-        // const response = await fetch(url)
+        const response = await fetch(url)
         let data = response.json()
         data.then((data) => {
             const results = data.results
