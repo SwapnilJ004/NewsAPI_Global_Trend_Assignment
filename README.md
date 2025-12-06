@@ -39,7 +39,7 @@ Any simple static server will work. Here are two easy options:
   # or, for Python 2
   python -m SimpleHTTPServer 5500
 
-= Then open your browser and go to:
+  Then open your browser and go to:
 
   http://localhost:5500
 
