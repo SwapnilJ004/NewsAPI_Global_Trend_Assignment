@@ -6,6 +6,8 @@ let searchButton = document.querySelector('#search-box #search-button')
 let searchBlock = document.querySelector('#search-box #search-placeholder')
 let newsType = "latest"
 
+let API_key = "pub_19af9df6eda64ed0bbac7be34d66787e"
+
 if (window.location.pathname.endsWith("news.html")) {
     const title = localStorage.getItem("title")
     const article_id = localStorage.getItem("article_id")
@@ -49,13 +51,33 @@ async function populateNewsData(url) {
 
             if (window.location.pathname.endsWith("index.html")) {
                 for (let i = 0; i < headings.length; i++) {
-                    headings[i].innerText = ""
+                    if (news[i] === null || news[i] === undefined) {
+                        headings[i].innerText = "N/A"
+                        descriptions[i].innerText = "N/A"
+
+                        headings[i].addEventListener('click', () => {
+                            localStorage.setItem('title', "N/A")
+                            localStorage.setItem('article_id', "N/A")
+                            localStorage.setItem('keywords', "N/A")
+                            localStorage.setItem('creator', "N/A")
+                            localStorage.setItem('video_url', "N/A")
+                            localStorage.setItem('category', "N/A")
+                            localStorage.setItem('publish_date', "N/A")
+                            localStorage.setItem('language', "N/A")
+                            localStorage.setItem('country', "N/A")
+                            localStorage.setItem('link', "N/A")
+                            localStorage.setItem('content', "N/A")
+                            window.location.href = "news.html"
+                        })
+
+                        continue
+                    }
+
                     headings[i].innerText = news[i].title
-                    if (news[i].description !== undefined) {
+                    if (news[i].description !== null) {
                         news[i].description = news[i].description.slice(0, 200)
                     }
                     descriptions[i].innerText = news[i].description
-
 
                     headings[i].addEventListener('click', () => {
                         localStorage.setItem('title', news[i].title)
@@ -87,7 +109,7 @@ function handleOptionChange(e) { // Called from HTML
 }
 
 function getNewsData() {
-    let url = `https://newsdata.io/api/1/${newsType}?apikey=pub_19af9df6eda64ed0bbac7be34d66787e`
+    let url = `https://newsdata.io/api/1/${newsType}?apikey=${API_key}`
     populateNewsData(url)
 }
 
@@ -97,7 +119,7 @@ if (window.location.pathname.endsWith("index.html")) {
         if (searchText === "") {
             return;
         }
-        let url = `https://newsdata.io/api/1/${newsType}?apikey=pub_19af9df6eda64ed0bbac7be34d66787e&qInTitle=${searchText}`
+        let url = `https://newsdata.io/api/1/${newsType}?apikey=${API_key}&qInTitle=${searchText}`
         populateNewsData(url)
     })
 }
